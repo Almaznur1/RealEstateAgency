@@ -6,7 +6,7 @@
 
 - Скачайте код
 - Установите зависимости командой `pip install -r requirements.txt`
-- Создайте файл базы данных и сразу примените все миграции командой `python3 manage.py migrate`
+- Скачайте файл базы данных [по ссылке](https://dvmn.org/filer/canonical/1565091134/187/) и сразу примените все миграции командой `python3 manage.py migrate`
 - Запустите сервер командой `python3 manage.py runserver`
 
 ## Переменные окружения
