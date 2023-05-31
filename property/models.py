@@ -66,6 +66,9 @@ class Complaint(models.Model):
         verbose_name='Квартира, на которую пожаловались')
     text = models.TextField('Текст жалобы')
 
+    def __str__(self):
+        return f'Жалоба на объявление {self.about_flat}'
+
 
 class Owner(models.Model):
     name = models.CharField('ФИО владельца', max_length=200, db_index=True)
@@ -78,4 +81,4 @@ class Owner(models.Model):
         db_index=True)
 
     def __str__(self):
-        return f'{self.name}'
+        return self.name
