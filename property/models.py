@@ -58,24 +58,24 @@ class Flat(models.Model):
 
 
 class Complaint(models.Model):
-    who_complained = models.ForeignKey(
+    from_whom = models.ForeignKey(
         User, on_delete=models.CASCADE, default='',
         verbose_name='Кто жаловался')
-    complained_about_flat = models.ForeignKey(
+    about_flat = models.ForeignKey(
         Flat, on_delete=models.CASCADE,
         verbose_name='Квартира, на которую пожаловались')
-    complaint_text = models.TextField('Текст жалобы')
+    text = models.TextField('Текст жалобы')
 
 
 class Owner(models.Model):
-    owner = models.CharField('ФИО владельца', max_length=200, db_index=True)
-    owners_phonenumber = models.CharField('Номер владельца', max_length=20,
-                                          db_index=True)
-    owner_pure_phone = PhoneNumberField('Нормализованный номер владельца',
-                                        blank=True, db_index=True)
-    owned_flats = models.ManyToManyField(
+    name = models.CharField('ФИО владельца', max_length=200, db_index=True)
+    phonenumber = models.CharField('Номер владельца',
+                                   max_length=20, db_index=True)
+    pure_phone = PhoneNumberField('Нормализованный номер владельца',
+                                  blank=True, db_index=True)
+    flats = models.ManyToManyField(
         Flat, related_name='owners', verbose_name='Квартиры в собственности',
         db_index=True)
 
     def __str__(self):
-        return f'{self.owner}'
+        return f'{self.name}'
